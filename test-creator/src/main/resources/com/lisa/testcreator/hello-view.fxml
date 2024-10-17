@@ -5,6 +5,14 @@
 
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="394.0" prefWidth="584.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lisa.testcreator.TestCreatorController">
    <children>
-      <ListView fx:id="testsList" prefHeight="400.0" prefWidth="170.0" />
+      <ListView fx:id="testsListListView" onMouseClicked="#testsItemClicked" prefHeight="400.0" prefWidth="170.0" />
+      <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+         <children>
+            <Label fx:id="questionTextLabel" visible="false" />
+            <Label fx:id="testNameLabel" text="Label" visible="false" />
+            <Label fx:id="welcomeTextLabel" text="Добро пожаловать" />
+            <Button fx:id="startTestButton" mnemonicParsing="false" text="Начать" visible="false" />
+         </children>
+      </VBox>
    </children>
 </HBox>

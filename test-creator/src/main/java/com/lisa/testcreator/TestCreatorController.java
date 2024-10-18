@@ -16,13 +16,20 @@ public class TestCreatorController {
     private Label testNameLabel;
     @FXML
     private Button startTestButton;
-
     private TestManager testManager;
+
+
 
     public void setTestManager(TestManager testManager) {
         this.testManager = testManager;
+        testManager.setTestSelectedListener(new EventListener() {
+            @Override
+            public void onTriggered() {
+                startTestButton.setVisible(false);
+                testNameLabel.setVisible(false);
+            }
+        });
     }
-
 
     public void addText(String text) {
         testsListListView.getItems().add(text);
@@ -31,7 +38,7 @@ public class TestCreatorController {
     public void testsItemClicked() {
         if(testManager == null) return;
         welcomeTextLabel.setVisible(false);
-        testNameLabel.setText(testManager.getTest(testsListListView.getSelectionModel().getSelectedIndex()).getName());
+        testNameLabel.setText(testManager.getTest(getSelectedTest()).getName());
         testNameLabel.setVisible(true);
         startTestButton.setVisible(true);
     }
@@ -43,8 +50,11 @@ public class TestCreatorController {
         }
     }
 
+    public int getSelectedTest() {
+        return testsListListView.getSelectionModel().getSelectedIndex();
+    }
+
     public void startTestButtonClicked() {
-        startTestButton.setVisible(false);
-        testNameLabel.setVisible(false);
+        testManager.selectTest(getSelectedTest());
     }
 }

@@ -8,10 +8,9 @@
       <ListView fx:id="testsListListView" onMouseClicked="#testsItemClicked" prefHeight="400.0" prefWidth="170.0" />
       <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
          <children>
-            <Label fx:id="questionTextLabel" visible="false" />
             <Label fx:id="testNameLabel" text="Label" visible="false" />
             <Label fx:id="welcomeTextLabel" text="Добро пожаловать" />
-            <Button fx:id="startTestButton" mnemonicParsing="false" text="Начать" visible="false" />
+            <Button fx:id="startTestButton" mnemonicParsing="false" onAction="#startTestButtonClicked" text="Начать" visible="false" />
          </children>
       </VBox>
    </children>

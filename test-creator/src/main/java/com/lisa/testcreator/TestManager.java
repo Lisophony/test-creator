@@ -8,9 +8,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TestManager {
-
+    EventListener testSelectedListener;
     private List<Test> tests;
+    private int selectedTestId;
     private ObjectMapper objectMapper = new ObjectMapper();
+
+    public void setTestSelectedListener(EventListener testSelectedListener) {
+        this.testSelectedListener = testSelectedListener;
+    }
+
 
     public void loadTests(String path) {
         File directory = new File(path);
@@ -31,5 +37,12 @@ public class TestManager {
     }
     public List<Test> getTests() {
         return tests;
+    }
+
+    public void selectTest(int testId) {
+        selectedTestId = testId;
+        if(testSelectedListener != null) {
+            testSelectedListener.onTriggered();
+        }
     }
 }

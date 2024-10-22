@@ -2,6 +2,7 @@ package com.lisa.testcreator;
 
 import javafx.fxml.FXML;
 
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -9,9 +10,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.VBox;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Objects;
 
 
 public class TestCreatorController {
@@ -71,6 +73,11 @@ public class TestCreatorController {
         testNameLabel.setText(testManager.getTest(getSelectedTestIndex()).getName());
         testNameLabel.setVisible(true);
         startTestButton.setVisible(true);
+
+        //убираем gui вопроса
+        answersVBox.getChildren().clear();
+        questionTextLabel.setVisible(false);
+        nextQuestionButton.setVisible(false);
     }
 
     public void populateTestsList(List<Test> tests) {
@@ -86,6 +93,12 @@ public class TestCreatorController {
 
     public void startTestButtonClicked() {
         testManager.startTest(getSelectedTestIndex());
+//        greetingsVBox.getChildren().clear();
+//        try {
+//            greetingsVBox.getChildren().add(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("questionWindow.fxml"))));
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
     }
 
     public void showQuestion() {
@@ -121,5 +134,9 @@ public class TestCreatorController {
         questionTextLabel.setVisible(false);
         nextQuestionButton.setVisible(false);
         nextQuestionButton.setText("Далее");
+    }
+
+    public void setTestStartScreen() {
+
     }
 }

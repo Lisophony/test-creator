@@ -54,6 +54,7 @@ public class TestManager {
     public void startTest(int testId) {
         selectedTestId = testId;
         questionId = 0;
+        points = 0;
         if(testSelectedListener != null) {
             testSelectedListener.onTriggered();
         }
@@ -69,7 +70,6 @@ public class TestManager {
     }
 
     public void submitAnswer(List<Integer> checkedAnswers) {
-        //бпосчитать баллы
         List<Integer> validAnswer = getCurrentQuestion().getAnswer();
         if(checkedAnswers.equals(validAnswer)) {
             points += getCurrentQuestion().getPoints();

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="386.0" prefWidth="536.0" spacing="10.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lisa.testcreator.GreetingViewController">
+   <children>
+      <Label fx:id="greetingsLabel" text="Добро пожаловать. Выберите тест ">
+         <VBox.margin>
+            <Insets />
+         </VBox.margin></Label>
+      <Button fx:id="startTestButton" mnemonicParsing="false" onAction="#handleStartTestButtonClicked" text="Начать" visible="false" />
+   </children>
+</VBox>

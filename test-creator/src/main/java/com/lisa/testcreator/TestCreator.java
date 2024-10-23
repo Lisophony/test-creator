@@ -17,23 +17,39 @@ public class TestCreator  extends Application {
     private TestManager testManager = new TestManager();
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(TestCreator.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
+        FXMLLoader mainViewFxmlLoader = new FXMLLoader(TestCreator.class.getResource("hello-view.fxml"));
+        FXMLLoader questionViewFxmlLoader = new FXMLLoader(TestCreator.class.getResource("question-view.fxml"));
+        FXMLLoader testResultViewFxmlLoader = new FXMLLoader(TestResultController.class.getResource("test-result-view.fxml"));
+        FXMLLoader greetingVieFxmlLoader = new FXMLLoader(TestCreator.class.getResource("greetings-view.fxml"));
+        Scene scene = new Scene(mainViewFxmlLoader.load());
         stage.setTitle("Пройди тест");
+
+        TestCreatorController testCreatorController = mainViewFxmlLoader.getController();
+        testCreatorController.setQuestionFxmlView(questionViewFxmlLoader.load());
+        testCreatorController.setTestResultFxmlView(testResultViewFxmlLoader.load());
+        testCreatorController.setGreetingsFxmlView(greetingVieFxmlLoader.load());
+
+        testManager.loadTests("src/main/resources/tests");
+
+        testCreatorController.setTestManager(testManager);
+        testCreatorController.populateTestsList(testManager.getTests());
+
+        QuestionViewController questionViewController = questionViewFxmlLoader.getController();
+        questionViewController.setTestManager(testManager);
+
+        TestResultController testResultController = testResultViewFxmlLoader.getController();
+        testResultController.setTestManager(testManager);
+
+        GreetingViewController greetingViewController = greetingVieFxmlLoader.getController();
+        greetingViewController.setTestManager(testManager);
+
+        testCreatorController.init();
 
         stage.setScene(scene);
         stage.show();
-        TestCreatorController controller = fxmlLoader.getController();
-        testManager.loadTests("src/main/resources/tests");
-        controller.setTestManager(testManager);
-        controller.populateTestsList(testManager.getTests());
     }
 
     public static void main(String[] args) throws IOException {
-
         launch();
-
-//       Test test = objectMapper.readValue(new File("src/main/resources/tests/Chemistry.json"), Test.class);
-
     }
 }

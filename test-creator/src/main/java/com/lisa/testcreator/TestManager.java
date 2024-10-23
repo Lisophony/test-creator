@@ -8,27 +8,41 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TestManager {
-    private EventListener testSelectedListener;
-    private EventListener questionChangedListener;
-    private EventListener testFinishedListener;
+    private Event testItemSelectedListener = new Event();
+    private Event testSelectedListener = new Event();
+    private Event questionChangedListener = new Event();
+    private Event testFinishedListener = new Event();
     private List<Test> tests;
     private int selectedTestId = -1;
+    private int currentTestId = -1;
     private int questionId = -1;
     private int points = 0;
     private ObjectMapper objectMapper = new ObjectMapper();
 
     public void setTestSelectedListener(EventListener testSelectedListener) {
-        this.testSelectedListener = testSelectedListener;
+        this.testSelectedListener.addListener(testSelectedListener);
     }
 
     public void setQuestionChangedListener(EventListener questionChangedListener) {
-        this.questionChangedListener = questionChangedListener;
+        this.questionChangedListener.addListener(questionChangedListener);
     }
 
     public void setTestFinishedListener(EventListener testFinishedListener) {
-        this.testFinishedListener = testFinishedListener;
+        this.testFinishedListener.addListener(testFinishedListener);
     }
 
+    public void setTestItemSelectedListener(EventListener testItemSelectedListener) {
+        this.testItemSelectedListener.addListener(testItemSelectedListener);
+    }
+
+    public int getSelectedTestId() {
+        return selectedTestId;
+    }
+
+    public void setSelectedTestId(int selectedTestId) {
+        this.selectedTestId = selectedTestId;
+        testItemSelectedListener.onTriggered();
+    }
 
     public void loadTests(String path) {
         File directory = new File(path);
@@ -47,12 +61,13 @@ public class TestManager {
     public Test getTest(int id) {
         return tests.get(id);
     }
+
     public List<Test> getTests() {
         return tests;
     }
 
     public void startTest(int testId) {
-        selectedTestId = testId;
+        currentTestId = testId;
         questionId = 0;
         points = 0;
         if(testSelectedListener != null) {
@@ -62,11 +77,11 @@ public class TestManager {
     }
 
     public Test getCurrentTest() {
-        return tests.get(selectedTestId);
+        return tests.get(currentTestId);
     }
 
     public Question getCurrentQuestion() {
-        return tests.get(selectedTestId).getQuestions().get(questionId);
+        return tests.get(currentTestId).getQuestions().get(questionId);
     }
 
     public void submitAnswer(List<Integer> checkedAnswers) {

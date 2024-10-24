@@ -8,6 +8,7 @@ public class Question {
     private ArrayList<String> options;
     private ArrayList<Integer> answer;
     private int points;
+    private boolean multipleAnswer;
 
     public String getQuestion() {
         return question;
@@ -17,7 +18,7 @@ public class Question {
         this.question = question;
     }
 
-    public List<String> getOptions() {
+    public ArrayList<String> getOptions() {
         return options;
     }
 
@@ -25,7 +26,7 @@ public class Question {
         this.options = options;
     }
 
-    public List<Integer> getAnswer() {
+    public ArrayList<Integer> getAnswer() {
         return answer;
     }
 
@@ -39,5 +40,13 @@ public class Question {
 
     public void setPoints(int points) {
         this.points = points;
+    }
+
+    public boolean isMultipleAnswer() {
+        return multipleAnswer;
+    }
+
+    public void setMultipleAnswer(boolean multipleAnswer) {
+        this.multipleAnswer = multipleAnswer;
     }
 }

@@ -2,9 +2,7 @@ package com.lisa.testcreator;
 
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 
 import java.util.ArrayList;
@@ -36,21 +34,37 @@ public class QuestionViewController {
         Question currentQuestion = testManager.getCurrentQuestion();
         questionTextLabel.setText(currentQuestion.getQuestion());
         List<String> options = currentQuestion.getOptions();
+        ToggleGroup radioButtonsGroup = new ToggleGroup();
         for(String option : options) {
-            answersVBox.getChildren().add(new CheckBox(option));
+            if(currentQuestion.isMultipleAnswer())
+                answersVBox.getChildren().add(new CheckBox(option));
+            else {
+                RadioButton radioButton = new RadioButton(option);
+                radioButton.setToggleGroup(radioButtonsGroup);
+                answersVBox.getChildren().add(radioButton);
+            }
         }
     }
 
     public void nextButtonClicked() {
         List<Integer> checkedAnswersId = new ArrayList<>();
         int checkBoxIndex = 1;
-        for(Node element : answersVBox.getChildren()) {
+        List<Node> answersVBoxElements = answersVBox.getChildren();
+        for(int i = 0; i < answersVBoxElements.size(); ++i) {
+            Node element = answersVBoxElements.get(i);
             if(element instanceof CheckBox) {
                 CheckBox checkBox = (CheckBox) element;
                 if(checkBox.isSelected()) {
                     checkedAnswersId.add(checkBoxIndex);
                 }
                 checkBoxIndex++;
+            }
+            else if(element instanceof RadioButton) {
+                RadioButton radioButton = (RadioButton) element;
+                if(radioButton.isSelected()) {
+                    checkedAnswersId.add(i + 1);
+                    break;
+                }
             }
         }
         answersVBox.getChildren().clear();

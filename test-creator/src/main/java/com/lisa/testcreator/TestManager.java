@@ -17,6 +17,7 @@ public class TestManager {
     private int currentTestId = -1;
     private int questionId = -1;
     private int points = 0;
+    private boolean testIsRunning = false;
     private ObjectMapper objectMapper = new ObjectMapper();
 
     public void setTestSelectedListener(EventListener testSelectedListener) {
@@ -42,6 +43,14 @@ public class TestManager {
     public void setSelectedTestId(int selectedTestId) {
         this.selectedTestId = selectedTestId;
         testItemSelectedListener.onTriggered();
+    }
+
+    public void setTestIsRunning(boolean testIsRunning) {
+        this.testIsRunning = testIsRunning;
+    }
+
+    public boolean isTestIsRunning() {
+        return testIsRunning;
     }
 
     public void loadTests(String path) {
@@ -70,6 +79,7 @@ public class TestManager {
         currentTestId = testId;
         questionId = 0;
         points = 0;
+        testIsRunning = true;
         if(testSelectedListener != null) {
             testSelectedListener.onTriggered();
         }
@@ -94,6 +104,7 @@ public class TestManager {
             if(questionChangedListener != null) questionChangedListener.onTriggered();
         }
         else {
+            testIsRunning = false;
             if(testFinishedListener != null) testFinishedListener.onTriggered();
         }
     }

@@ -2,11 +2,10 @@ package com.lisa.testcreator;
 
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import java.util.List;
+import java.util.Optional;
 
 
 public class TestCreatorController {
@@ -19,6 +18,9 @@ public class TestCreatorController {
     private Node questionFxmlView;
     private Node testResultFxmlView;
     private Node greetingsFxmlView;
+    ButtonType okAlertButton = new ButtonType("Да", ButtonBar.ButtonData.OK_DONE);
+    ButtonType cancelAlertButton = new ButtonType("Нет", ButtonBar.ButtonData.CANCEL_CLOSE);
+    private Alert testIsRunningAlert = new Alert(Alert.AlertType.CONFIRMATION, "", okAlertButton, cancelAlertButton);
 
     public void setQuestionFxmlView(Node questionFxmlView) {
         this.questionFxmlView = questionFxmlView;
@@ -43,8 +45,20 @@ public class TestCreatorController {
             greetingsVBox.getChildren().add(testResultFxmlView);
         });
         testManager.setTestItemSelectedListener(() -> {
-            greetingsVBox.getChildren().clear();
-            greetingsVBox.getChildren().add(greetingsFxmlView);
+            if(testManager.isTestIsRunning()) {
+                testIsRunningAlert.setHeaderText("Прервать прохождение теста?");
+                Optional<ButtonType> buttonType = testIsRunningAlert.showAndWait();
+                ButtonType button = buttonType.orElse(cancelAlertButton);
+                if(button == okAlertButton) {
+                    greetingsVBox.getChildren().clear();
+                    greetingsVBox.getChildren().add(greetingsFxmlView);
+                    testManager.setTestIsRunning(false);
+                }
+            }
+            else {
+                greetingsVBox.getChildren().clear();
+                greetingsVBox.getChildren().add(greetingsFxmlView);
+            }
         });
     }
 

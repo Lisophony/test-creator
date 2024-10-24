@@ -34,26 +34,17 @@ public class TestCreatorController {
 
     public void setTestManager(TestManager testManager) {
         this.testManager = testManager;
-        testManager.setTestSelectedListener(new EventListener() {
-            @Override
-            public void onTriggered() {
-                greetingsVBox.getChildren().clear();
-                greetingsVBox.getChildren().add(questionFxmlView);
-            }
+        testManager.setTestSelectedListener(() -> {
+            greetingsVBox.getChildren().clear();
+            greetingsVBox.getChildren().add(questionFxmlView);
         });
-        testManager.setTestFinishedListener(new EventListener() {
-            @Override
-            public void onTriggered() {
-                greetingsVBox.getChildren().clear();
-                greetingsVBox.getChildren().add(testResultFxmlView);
-            }
+        testManager.setTestFinishedListener(() -> {
+            greetingsVBox.getChildren().clear();
+            greetingsVBox.getChildren().add(testResultFxmlView);
         });
-        testManager.setTestItemSelectedListener(new EventListener() {
-            @Override
-            public void onTriggered() {
-                greetingsVBox.getChildren().clear();
-                greetingsVBox.getChildren().add(greetingsFxmlView);
-            }
+        testManager.setTestItemSelectedListener(() -> {
+            greetingsVBox.getChildren().clear();
+            greetingsVBox.getChildren().add(greetingsFxmlView);
         });
     }
 

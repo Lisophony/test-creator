@@ -11,12 +11,7 @@ public class TestResultController {
 
     public void setTestManager(TestManager testManager) {
         this.testManager = testManager;
-        testManager.setTestFinishedListener(new EventListener() {
-            @Override
-            public void onTriggered() {
-                showTestResult();
-            }
-        });
+        testManager.setTestFinishedListener(() -> showTestResult());
     }
 
     public void showTestResult() {

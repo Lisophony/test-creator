@@ -22,18 +22,10 @@ public class QuestionViewController {
 
     public void setTestManager(TestManager testManager) {
         this.testManager = testManager;
-        testManager.setQuestionChangedListener(new EventListener() {
-            @Override
-            public void onTriggered() {
-                showQuestion();
-            }
-        });
-        testManager.setTestSelectedListener(new EventListener() {
-            @Override
-            public void onTriggered() {
-                answersVBox.getChildren().clear();
-                nextButton.setText("Далее");
-            }
+        testManager.setQuestionChangedListener(() -> showQuestion());
+        testManager.setTestSelectedListener(() -> {
+            answersVBox.getChildren().clear();
+            nextButton.setText("Далее");
         });
     }
 

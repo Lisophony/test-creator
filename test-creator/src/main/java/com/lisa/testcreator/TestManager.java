@@ -16,7 +16,8 @@ public class TestManager {
     private int selectedTestId = -1;
     private int currentTestId = -1;
     private int questionId = -1;
-    private int points = 0;
+    private int score = 0;
+    private int maxPoints;
     private boolean testIsRunning = false;
     private ObjectMapper objectMapper = new ObjectMapper();
 
@@ -78,7 +79,7 @@ public class TestManager {
     public void startTest(int testId) {
         currentTestId = testId;
         questionId = 0;
-        points = 0;
+        score = 0;
         testIsRunning = true;
         if(testSelectedListener != null) {
             testSelectedListener.onTriggered();
@@ -97,7 +98,7 @@ public class TestManager {
     public void submitAnswer(List<Integer> checkedAnswers) {
         List<Integer> validAnswer = getCurrentQuestion().getAnswer();
         if(checkedAnswers.equals(validAnswer)) {
-            points += getCurrentQuestion().getPoints();
+            score += getCurrentQuestion().getPoints();
         }
         questionId++;
         if(questionId < getCurrentTest().getQuestions().size()) {
@@ -109,8 +110,16 @@ public class TestManager {
         }
     }
 
-    public int getPoints() {
-        return points;
+    public int getScore() {
+        return score;
+    }
+
+    public int getMaxPoints() {
+        maxPoints = 0;
+        for(Question question : getCurrentTest().getQuestions()){
+            maxPoints += question.getPoints();
+        }
+        return maxPoints;
     }
 
     public int getQuestionId() {

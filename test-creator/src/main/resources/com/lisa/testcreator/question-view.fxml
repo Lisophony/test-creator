@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="394.0" prefWidth="530.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lisa.testcreator.QuestionViewController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="435.0" prefWidth="698.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lisa.testcreator.QuestionViewController">
    <children>
       <VBox prefHeight="123.0" prefWidth="539.0">
          <children>
@@ -17,7 +17,7 @@
          <padding>
             <Insets left="60.0" right="20.0" top="40.0" />
          </padding></VBox>
-      <VBox fx:id="answersVBox" maxHeight="1.7976931348623157E308" prefWidth="600.0" spacing="10.0" VBox.vgrow="ALWAYS">
+      <VBox fx:id="answersVBox" maxHeight="1.7976931348623157E308" prefHeight="219.0" prefWidth="672.0" spacing="10.0" VBox.vgrow="ALWAYS">
          <VBox.margin>
             <Insets />
          </VBox.margin>
@@ -25,7 +25,7 @@
             <Insets left="60.0" top="40.0" />
          </padding>
       </VBox>
-      <AnchorPane maxHeight="-Infinity" prefHeight="56.0" prefWidth="530.0">
+      <AnchorPane maxHeight="-Infinity" prefHeight="54.0" prefWidth="672.0">
          <children>
             <Button fx:id="nextButton" layoutX="336.0" layoutY="1.0" mnemonicParsing="false" onAction="#nextButtonClicked" text="Далее" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="0.0" />
          </children>

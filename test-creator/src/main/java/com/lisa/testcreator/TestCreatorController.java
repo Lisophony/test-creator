@@ -20,7 +20,7 @@ public class TestCreatorController {
     private Node greetingsFxmlView;
     ButtonType okAlertButton = new ButtonType("Да", ButtonBar.ButtonData.OK_DONE);
     ButtonType cancelAlertButton = new ButtonType("Нет", ButtonBar.ButtonData.CANCEL_CLOSE);
-    private Alert testIsRunningAlert = new Alert(Alert.AlertType.CONFIRMATION, "", okAlertButton, cancelAlertButton);
+    private final Alert testIsRunningAlert = new Alert(Alert.AlertType.CONFIRMATION, "", okAlertButton, cancelAlertButton);
 
     public void setQuestionFxmlView(Node questionFxmlView) {
         this.questionFxmlView = questionFxmlView;

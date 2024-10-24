@@ -3,9 +3,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="403.0" prefWidth="719.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lisa.testcreator.TestCreatorController">
+<HBox fx:id="mainViewHBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="467.0" prefWidth="925.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lisa.testcreator.TestCreatorController">
    <children>
       <ListView fx:id="testsListListView" onMouseClicked="#testsItemClicked" prefHeight="409.0" prefWidth="215.0" />
-      <VBox fx:id="greetingsVBox" alignment="TOP_CENTER" prefHeight="394.0" prefWidth="516.0" HBox.hgrow="ALWAYS" />
+      <VBox fx:id="greetingsVBox" alignment="TOP_CENTER" prefHeight="408.0" prefWidth="517.0" HBox.hgrow="ALWAYS" />
    </children>
 </HBox>

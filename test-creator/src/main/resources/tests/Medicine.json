@@ -8,7 +8,7 @@
       ],
       "answer" : [5],
       "points" : 10,
-      "multipleAnswer": false
+      "multipleAnswer": true
     },
     {
       "question" : "Основные уровни деятельности медсестры:",
@@ -17,7 +17,7 @@
       ],
       "answer" : [4],
       "points" : 10,
-      "multipleAnswer": false
+      "multipleAnswer": true
     },
     {
       "question" : "Может ли здоровый человек быть пациентом медицинской сестры?",
@@ -53,14 +53,14 @@
       ],
       "answer" : [4],
       "points" : 10,
-      "multipleAnswer": false
+      "multipleAnswer": true
     },
     {
       "question" : "болезненные психические состояния или заболевания, вызванные неблагоприятными воздействиями медицинского работника на психику больного называются",
       "options" : [
         "ятрогения", "психопатия", "соматогения"
       ],
-      "answer" : [4],
+      "answer" : [1],
       "points" : 10,
       "multipleAnswer": false
     }

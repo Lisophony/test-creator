@@ -54,6 +54,7 @@ public class QuestionViewController {
             Node element = answersVBoxElements.get(i);
             if(element instanceof CheckBox) {
                 CheckBox checkBox = (CheckBox) element;
+                checkBox.setWrapText(true);
                 if(checkBox.isSelected()) {
                     checkedAnswersId.add(checkBoxIndex);
                 }
@@ -61,6 +62,7 @@ public class QuestionViewController {
             }
             else if(element instanceof RadioButton) {
                 RadioButton radioButton = (RadioButton) element;
+                radioButton.setWrapText(true);
                 if(radioButton.isSelected()) {
                     checkedAnswersId.add(i + 1);
                     break;

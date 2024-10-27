@@ -22,9 +22,13 @@ public class TestResultController {
     public void showTestResult() {
         resultPointsLabel.setText("Набранный балл " + testManager.getScore() + "/" + testManager.getMaxPoints());
         testResultPieChart.legendVisibleProperty().set(false);
+        Double validAnswersPercent = ((double) testManager.getScore())/ testManager.getMaxPoints() * 100;
+        Double invalidAnswersPercent = 100 - validAnswersPercent;
+        String validMarker = String.format("Верно %.2f %%", validAnswersPercent);
+        String invalidMarker = String.format("Неверно %.2f %%", invalidAnswersPercent);
         ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
-        pieChartData.add(new PieChart.Data("Верно", testManager.getScore()));
-        pieChartData.add(new PieChart.Data("Неверно", testManager.getMaxPoints()-testManager.getScore()));
+        pieChartData.add(new PieChart.Data(validMarker, testManager.getScore()));
+        pieChartData.add(new PieChart.Data(invalidMarker, testManager.getMaxPoints()-testManager.getScore()));
         testResultPieChart.setData(pieChartData);
     }
 }

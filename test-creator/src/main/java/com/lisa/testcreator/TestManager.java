@@ -12,6 +12,7 @@ public class TestManager {
     private Event testSelectedListener = new Event();
     private Event questionChangedListener = new Event();
     private Event testFinishedListener = new Event();
+    private Event testsListChangedListener = new Event();
     private List<Test> tests;
     private int selectedTestId = -1;
     private int currentTestId = -1;
@@ -37,12 +38,26 @@ public class TestManager {
         this.testItemSelectedListener.addListener(testItemSelectedListener);
     }
 
+    public void setTestsListChangedListener(EventListener testsListChangedListener) {
+        this.testsListChangedListener.addListener(testsListChangedListener);
+    }
+
     public int getSelectedTestId() {
         return selectedTestId;
     }
 
     public void setSelectedTestId(int selectedTestId) {
         this.selectedTestId = selectedTestId;
+        testItemSelectedListener.onTriggered();
+    }
+
+    private void resetAllStates() {
+        selectedTestId = -1;
+        currentTestId = -1;
+        questionId = -1;
+        score = 0;
+        testIsRunning = false;
+        testSelectedListener.onTriggered();
         testItemSelectedListener.onTriggered();
     }
 
@@ -67,6 +82,7 @@ public class TestManager {
                 }
             }
         }
+        testsListChangedListener.onTriggered();
     }
     public Test getTest(int id) {
         return tests.get(id);
@@ -125,4 +141,5 @@ public class TestManager {
     public int getQuestionId() {
         return questionId;
     }
+
 }

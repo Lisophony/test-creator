@@ -5,10 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -29,10 +26,10 @@ public class TestCreator  extends Application {
         testCreatorController.setTestResultFxmlView(testResultViewFxmlLoader.load());
         testCreatorController.setGreetingsFxmlView(greetingVieFxmlLoader.load());
 
-        testManager.loadTests("src/main/resources/tests");
+
 
         testCreatorController.setTestManager(testManager);
-        testCreatorController.populateTestsList(testManager.getTests());
+        testCreatorController.setStage(stage);
 
         QuestionViewController questionViewController = questionViewFxmlLoader.getController();
         questionViewController.setTestManager(testManager);
@@ -43,7 +40,9 @@ public class TestCreator  extends Application {
         GreetingViewController greetingViewController = greetingVieFxmlLoader.getController();
         greetingViewController.setTestManager(testManager);
 
-        testCreatorController.init();
+        testCreatorController.showGreetingView();
+
+        testManager.loadTests("src/main/resources/tests");
 
         stage.setScene(scene);
         stage.show();

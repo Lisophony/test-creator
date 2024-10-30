@@ -10,8 +10,8 @@ import java.io.IOException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class TestCreator  extends Application {
-    private static ObjectMapper objectMapper = new ObjectMapper();
     private TestManager testManager = new TestManager();
+
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader mainViewFxmlLoader = new FXMLLoader(TestCreator.class.getResource("hello-view.fxml"));
@@ -20,13 +20,12 @@ public class TestCreator  extends Application {
         FXMLLoader greetingVieFxmlLoader = new FXMLLoader(TestCreator.class.getResource("greetings-view.fxml"));
         Scene scene = new Scene(mainViewFxmlLoader.load());
         stage.setTitle("Пройди тест");
+        stage.setResizable(false);
 
         TestCreatorController testCreatorController = mainViewFxmlLoader.getController();
         testCreatorController.setQuestionFxmlView(questionViewFxmlLoader.load());
         testCreatorController.setTestResultFxmlView(testResultViewFxmlLoader.load());
         testCreatorController.setGreetingsFxmlView(greetingVieFxmlLoader.load());
-
-
 
         testCreatorController.setTestManager(testManager);
         testCreatorController.setStage(stage);
@@ -48,7 +47,7 @@ public class TestCreator  extends Application {
         stage.show();
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         launch();
     }
 }

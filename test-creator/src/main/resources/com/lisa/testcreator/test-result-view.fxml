@@ -5,11 +5,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="429.0" prefWidth="711.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lisa.testcreator.TestResultController">
+<VBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="479.0" prefWidth="771.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lisa.testcreator.TestResultController">
    <children>
-      <HBox prefHeight="452.0" prefWidth="738.0" VBox.vgrow="ALWAYS">
+      <HBox prefHeight="467.0" prefWidth="764.0" VBox.vgrow="ALWAYS">
          <children>
-            <PieChart fx:id="testResultPieChart" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0">
+            <PieChart fx:id="testResultPieChart" minHeight="-Infinity" minWidth="-Infinity" prefWidth="495.0">
                <HBox.margin>
                   <Insets />
                </HBox.margin></PieChart>

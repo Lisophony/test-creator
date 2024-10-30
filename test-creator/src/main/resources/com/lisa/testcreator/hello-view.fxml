@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 
 
-<VBox minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lisa.testcreator.TestCreatorController">
+<VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="535.0" prefWidth="953.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lisa.testcreator.TestCreatorController">
    <children>
       <MenuBar>
         <menus>
@@ -15,10 +15,10 @@
           </Menu>
         </menus>
       </MenuBar>
-      <HBox fx:id="mainViewHBox" minHeight="-Infinity" minWidth="-Infinity" prefHeight="467.0" prefWidth="925.0">
+      <HBox fx:id="mainViewHBox" minHeight="-Infinity" minWidth="-Infinity" prefHeight="508.0" prefWidth="953.0">
          <children>
             <ListView fx:id="testsListListView" maxWidth="-Infinity" onMouseClicked="#testsItemClicked" prefWidth="215.0" />
-            <VBox fx:id="greetingsVBox" alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
+            <VBox fx:id="greetingsVBox" alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="474.0" prefWidth="708.0" HBox.hgrow="ALWAYS" />
          </children>
       </HBox>
    </children>

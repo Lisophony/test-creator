@@ -18,7 +18,6 @@ public class TestManager {
     private int currentTestId = -1;
     private int questionId = -1;
     private int score = 0;
-    private int maxPoints;
     private boolean testIsRunning = false;
     private ObjectMapper objectMapper = new ObjectMapper();
 
@@ -131,7 +130,7 @@ public class TestManager {
     }
 
     public int getMaxPoints() {
-        maxPoints = 0;
+        int maxPoints = 0;
         for(Question question : getCurrentTest().getQuestions()){
             maxPoints += question.getPoints();
         }

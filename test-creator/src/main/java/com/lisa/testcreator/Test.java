@@ -1,7 +1,5 @@
 package com.lisa.testcreator;
 
-import com.lisa.testcreator.Question;
-
 import java.util.ArrayList;
 import java.util.List;
 

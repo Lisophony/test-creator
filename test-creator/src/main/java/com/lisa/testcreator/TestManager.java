@@ -45,6 +45,10 @@ public class TestManager {
         return selectedTestId;
     }
 
+    public int getCurrentTestId() {
+        return currentTestId;
+    }
+
     public void setSelectedTestId(int selectedTestId) {
         this.selectedTestId = selectedTestId;
         testItemSelectedListener.onTriggered();

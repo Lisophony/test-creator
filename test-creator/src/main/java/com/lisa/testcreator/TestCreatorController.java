@@ -63,6 +63,9 @@ public class TestCreatorController {
                     showGreetingView();
                     testManager.setTestIsRunning(false);
                 }
+                else {
+                     testsListListView.getSelectionModel().select(testManager.getCurrentTestId());
+                }
             }
             else {
                 showGreetingView();

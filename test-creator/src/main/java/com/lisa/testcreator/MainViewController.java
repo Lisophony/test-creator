@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 
-public class TestCreatorController {
+public class MainViewController {
     @FXML
     private ListView<String> testsListListView;
     @FXML

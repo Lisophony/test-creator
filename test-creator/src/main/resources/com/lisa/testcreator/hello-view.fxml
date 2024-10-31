@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 
 
-<VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="535.0" prefWidth="953.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lisa.testcreator.TestCreatorController">
+<VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="535.0" prefWidth="953.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lisa.testcreator.MainViewController">
    <children>
       <MenuBar>
         <menus>

@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Label;
 
-public class TestResultController {
+public class TestResultViewController {
     @FXML
     private Label resultPointsLabel;
     @FXML

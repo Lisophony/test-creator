@@ -85,6 +85,7 @@ public class TestManager {
                 }
             }
         }
+        testIsRunning = false;
         testsListChangedListener.onTriggered();
     }
     public Test getTest(int id) {

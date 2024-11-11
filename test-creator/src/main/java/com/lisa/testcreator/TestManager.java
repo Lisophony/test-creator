@@ -16,10 +16,11 @@ public class TestManager {
     private Event testCreationStartedListener = new Event();
     private Event creatingTestNameIsSet = new Event();
     private Event creatingTestQuestionIsSetListener = new Event();
+    private Event creatingTestFinishedListener= new Event();
 
     private boolean testCreationRunning = false;
     private Test testToCreate;
-    private List<Question> createdTestQuestions;
+    private ArrayList<Question> createdTestQuestions;
 
     private List<Test> tests;
     private int selectedTestId = -1;
@@ -59,6 +60,10 @@ public class TestManager {
 
     public void setCreatingTestQuestionIsSetListener(EventListener creatingTestQuestionIsSetListener) {
         this.creatingTestQuestionIsSetListener.addListener(creatingTestQuestionIsSetListener);
+    }
+
+    public void setCreatingTestFinishedListener(EventListener creatingTestFinishedListener) {
+        this.creatingTestFinishedListener.addListener(creatingTestFinishedListener);
     }
 
     public int getSelectedTestId() {
@@ -182,5 +187,18 @@ public class TestManager {
     public void addQuestionToCreatingTest(Question question) {
         createdTestQuestions.add(question);
         creatingTestQuestionIsSetListener.onTriggered();
+    }
+
+    public void finishTestCreating() {
+        testToCreate.setQuestions(createdTestQuestions);
+        creatingTestFinishedListener.onTriggered();
+    }
+
+    public void saveCreatedTest(String path) {
+        try {
+            objectMapper.writeValue(new File(path + "/newTest.json"), testToCreate);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

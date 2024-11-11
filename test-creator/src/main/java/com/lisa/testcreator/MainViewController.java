@@ -95,6 +95,11 @@ public class MainViewController {
             greetingsVBox.getChildren().clear();
             greetingsVBox.getChildren().add(createTestQuestionView);
         });
+        testManager.setCreatingTestFinishedListener(() -> {
+            DirectoryChooser directoryChooser = new DirectoryChooser();
+            File file = directoryChooser.showDialog(stage);
+            testManager.saveCreatedTest(file.getPath());
+        });
     }
 
     public void showGreetingView() {

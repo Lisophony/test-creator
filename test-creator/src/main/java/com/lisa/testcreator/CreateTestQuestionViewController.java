@@ -6,7 +6,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import javafx.stage.DirectoryChooser;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +24,8 @@ public class CreateTestQuestionViewController {
     private VBox optionsVBox;
     @FXML
     private Button nextButton;
+    @FXML
+    private Button finishButton;
 
 
     public void setTestManager(TestManager testManager) {
@@ -51,10 +55,18 @@ public class CreateTestQuestionViewController {
             }
             options.add(checkBox.getText());
         }
+        if(answer.size() > 1) {
+            question.setMultipleAnswer(true);
+        }
         question.setQuestion(questionTextField.getText());
         question.setAnswer(answer);
         question.setOptions(options);
         question.setPoints(10);
         testManager.addQuestionToCreatingTest(question);
+    }
+
+    public void handleFinishButtonClicked () {
+        handleNextButtonClicked();
+        testManager.finishTestCreating();
     }
 }

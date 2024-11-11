@@ -91,6 +91,10 @@ public class MainViewController {
             greetingsVBox.getChildren().clear();
             greetingsVBox.getChildren().add(createTestNameView);
         });
+        testManager.setCreatingTestNameIsSet(() -> {
+            greetingsVBox.getChildren().clear();
+            greetingsVBox.getChildren().add(createTestQuestionView);
+        });
     }
 
     public void showGreetingView() {

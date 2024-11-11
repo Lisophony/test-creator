@@ -14,9 +14,11 @@ public class TestManager {
     private Event testFinishedListener = new Event();
     private Event testsListChangedListener = new Event();
     private Event testCreationStartedListener = new Event();
+    private Event creatingTestNameIsSet = new Event();
+    private Event creatingTestQuestionIsSetListener = new Event();
 
     private boolean testCreationRunning = false;
-    private Test testToBeCreated;
+    private Test testToCreate;
     private List<Question> createdTestQuestions;
 
     private List<Test> tests;
@@ -49,6 +51,14 @@ public class TestManager {
 
     public void setTestCreationStartedListener(EventListener testCreationStartedListener) {
         this.testCreationStartedListener.addListener(testCreationStartedListener);
+    }
+
+    public void setCreatingTestNameIsSet(EventListener creatingTestNameIsSetListener) {
+        this.creatingTestNameIsSet.addListener(creatingTestNameIsSetListener);
+    }
+
+    public void setCreatingTestQuestionIsSetListener(EventListener creatingTestQuestionIsSetListener) {
+        this.creatingTestQuestionIsSetListener.addListener(creatingTestQuestionIsSetListener);
     }
 
     public int getSelectedTestId() {
@@ -159,8 +169,18 @@ public class TestManager {
     public void startTestCreationMode() {
         resetAllStates();
         testCreationRunning = true;
-        testToBeCreated = new Test();
+        testToCreate = new Test();
         createdTestQuestions = new ArrayList<>();
         testCreationStartedListener.onTriggered();
+    }
+
+    public void setTestToCreateName(String testName) {
+        testToCreate.setName(testName);
+        creatingTestNameIsSet.onTriggered();
+    }
+
+    public void addQuestionToCreatingTest(Question question) {
+        createdTestQuestions.add(question);
+        creatingTestQuestionIsSetListener.onTriggered();
     }
 }

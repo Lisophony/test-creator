@@ -87,6 +87,10 @@ public class MainViewController {
             showGreetingView();
             populateTestsList(testManager.getTests());
         });
+        testManager.setTestCreationStartedListener(() -> {
+            greetingsVBox.getChildren().clear();
+            greetingsVBox.getChildren().add(createTestNameView);
+        });
     }
 
     public void showGreetingView() {
@@ -122,6 +126,6 @@ public class MainViewController {
     }
 
     public void handleCreateTestButtonClicked() {
-        testsListListView.setDisable(true);
+        testManager.startTestCreationMode();
     }
 }

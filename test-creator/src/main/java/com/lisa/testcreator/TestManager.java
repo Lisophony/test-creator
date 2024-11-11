@@ -13,8 +13,11 @@ public class TestManager {
     private Event questionChangedListener = new Event();
     private Event testFinishedListener = new Event();
     private Event testsListChangedListener = new Event();
+    private Event testCreationStartedListener = new Event();
 
     private boolean testCreationRunning = false;
+    private Test testToBeCreated;
+    private List<Question> createdTestQuestions;
 
     private List<Test> tests;
     private int selectedTestId = -1;
@@ -44,6 +47,10 @@ public class TestManager {
         this.testsListChangedListener.addListener(testsListChangedListener);
     }
 
+    public void setTestCreationStartedListener(EventListener testCreationStartedListener) {
+        this.testCreationStartedListener.addListener(testCreationStartedListener);
+    }
+
     public int getSelectedTestId() {
         return selectedTestId;
     }
@@ -63,8 +70,8 @@ public class TestManager {
         questionId = -1;
         score = 0;
         testIsRunning = false;
-        testSelectedListener.onTriggered();
-        testItemSelectedListener.onTriggered();
+//        testSelectedListener.onTriggered();
+//        testItemSelectedListener.onTriggered();
     }
 
     public void setTestIsRunning(boolean testIsRunning) {
@@ -150,6 +157,10 @@ public class TestManager {
     }
 
     public void startTestCreationMode() {
+        resetAllStates();
         testCreationRunning = true;
+        testToBeCreated = new Test();
+        createdTestQuestions = new ArrayList<>();
+        testCreationStartedListener.onTriggered();
     }
 }

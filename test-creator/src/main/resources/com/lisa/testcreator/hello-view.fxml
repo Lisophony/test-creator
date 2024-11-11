@@ -20,7 +20,7 @@
             <VBox alignment="TOP_CENTER">
                <children>
                   <ListView fx:id="testsListListView" maxWidth="-Infinity" onMouseClicked="#testsItemClicked" prefWidth="215.0" VBox.vgrow="ALWAYS" />
-                  <Button fx:id="createTestButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Создать тест">
+                  <Button fx:id="createTestButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleCreateTestButtonClicked" text="Создать тест">
                      <VBox.margin>
                         <Insets bottom="10.0" top="10.0" />
                      </VBox.margin>

@@ -13,6 +13,9 @@ public class TestManager {
     private Event questionChangedListener = new Event();
     private Event testFinishedListener = new Event();
     private Event testsListChangedListener = new Event();
+
+    private boolean testCreationRunning = false;
+
     private List<Test> tests;
     private int selectedTestId = -1;
     private int currentTestId = -1;
@@ -146,4 +149,7 @@ public class TestManager {
         return questionId;
     }
 
+    public void startTestCreationMode() {
+        testCreationRunning = true;
+    }
 }

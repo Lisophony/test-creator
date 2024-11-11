@@ -16,6 +16,8 @@ public class TestCreator  extends Application {
         FXMLLoader questionViewFxmlLoader = new FXMLLoader(TestCreator.class.getResource("question-view.fxml"));
         FXMLLoader testResultViewFxmlLoader = new FXMLLoader(TestResultViewController.class.getResource("test-result-view.fxml"));
         FXMLLoader greetingVieFxmlLoader = new FXMLLoader(TestCreator.class.getResource("greetings-view.fxml"));
+        FXMLLoader createTestNameViewFxmlLoader = new FXMLLoader(TestCreator.class.getResource("create-test-name-view.fxml"));
+        FXMLLoader createTestQuestionViewFxmlLoader = new FXMLLoader(TestCreator.class.getResource("create-test-question-view.fxml"));
         Scene scene = new Scene(mainViewFxmlLoader.load());
         stage.setTitle("Пройди тест");
         stage.setResizable(false);
@@ -24,6 +26,8 @@ public class TestCreator  extends Application {
         mainViewController.setQuestionFxmlView(questionViewFxmlLoader.load());
         mainViewController.setTestResultFxmlView(testResultViewFxmlLoader.load());
         mainViewController.setGreetingsFxmlView(greetingVieFxmlLoader.load());
+        mainViewController.setCreateTestNameView(createTestNameViewFxmlLoader.load());
+        mainViewController.setCreateTestQuestionView(createTestQuestionViewFxmlLoader.load());
 
         mainViewController.setTestManager(testManager);
         mainViewController.setStage(stage);
@@ -36,6 +40,13 @@ public class TestCreator  extends Application {
 
         GreetingViewController greetingViewController = greetingVieFxmlLoader.getController();
         greetingViewController.setTestManager(testManager);
+
+        CreateTestNameViewController createTestNameViewController = createTestNameViewFxmlLoader.getController();
+        createTestNameViewController.setTestManager(testManager);
+
+        CreateTestQuestionViewController createTestQuestionViewController = createTestQuestionViewFxmlLoader.getController();
+        createTestQuestionViewController.setTestManager(testManager);
+
 
         mainViewController.showGreetingView();
 

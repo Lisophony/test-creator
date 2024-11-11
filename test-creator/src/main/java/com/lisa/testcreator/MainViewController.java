@@ -17,11 +17,15 @@ public class MainViewController {
     private ListView<String> testsListListView;
     @FXML
     private VBox greetingsVBox;
+    @FXML
+    private Button createTestButton;
 
     private TestManager testManager;
     private Node questionFxmlView;
     private Node testResultFxmlView;
     private Node greetingsFxmlView;
+    private Node createTestNameView;
+    private Node createTestQuestionView;
     private Stage stage;
 
     ButtonType okAlertButton = new ButtonType("Да", ButtonBar.ButtonData.OK_DONE);
@@ -38,6 +42,14 @@ public class MainViewController {
 
     public void setGreetingsFxmlView(Node greetingsFxmlView) {
         this.greetingsFxmlView = greetingsFxmlView;
+    }
+
+    public void setCreateTestNameView(Node createTestNameView) {
+        this.createTestNameView = createTestNameView;
+    }
+
+    public void setCreateTestQuestionView(Node createTestQuestionView) {
+        this.createTestQuestionView = createTestQuestionView;
     }
 
     public void setStage(Stage stage) {
@@ -107,5 +119,9 @@ public class MainViewController {
 
     public int getSelectedTestIndex() {
         return testsListListView.getSelectionModel().getSelectedIndex();
+    }
+
+    public void handleCreateTestButtonClicked() {
+        testsListListView.setDisable(true);
     }
 }

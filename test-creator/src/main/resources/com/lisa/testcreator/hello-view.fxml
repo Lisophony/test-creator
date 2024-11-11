@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="535.0" prefWidth="953.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lisa.testcreator.MainViewController">
+<VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="535.0" prefWidth="953.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lisa.testcreator.MainViewController">
    <children>
       <MenuBar>
         <menus>
@@ -17,7 +17,16 @@
       </MenuBar>
       <HBox fx:id="mainViewHBox" minHeight="-Infinity" minWidth="-Infinity" prefHeight="508.0" prefWidth="953.0">
          <children>
-            <ListView fx:id="testsListListView" maxWidth="-Infinity" onMouseClicked="#testsItemClicked" prefWidth="215.0" />
+            <VBox alignment="TOP_CENTER">
+               <children>
+                  <ListView fx:id="testsListListView" maxWidth="-Infinity" onMouseClicked="#testsItemClicked" prefWidth="215.0" VBox.vgrow="ALWAYS" />
+                  <Button fx:id="createTestButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Создать тест">
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
             <VBox fx:id="greetingsVBox" alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="474.0" prefWidth="708.0" HBox.hgrow="ALWAYS" />
          </children>
       </HBox>

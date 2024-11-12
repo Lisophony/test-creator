@@ -40,10 +40,17 @@ public class CreateTestQuestionViewController {
     public void handleAddAnswerButtonClicked() {
         String answer = answerTextField.getText();
         answerTextField.clear();
-        optionsVBox.getChildren().add(new CheckBox(answer));
+        answerTextField.requestFocus();
+        if(!answer.isEmpty()) {
+            optionsVBox.getChildren().add(new CheckBox(answer));
+        }
     }
 
     public void handleNextButtonClicked() {
+        gatherQuestion();
+    }
+
+    public void gatherQuestion() {
         Question question = new Question();
         ArrayList<String> options = new ArrayList<>();
         ArrayList<Integer> answer = new ArrayList<>();
@@ -66,7 +73,7 @@ public class CreateTestQuestionViewController {
     }
 
     public void handleFinishButtonClicked () {
-        handleNextButtonClicked();
+        gatherQuestion();
         testManager.finishTestCreating();
     }
 }

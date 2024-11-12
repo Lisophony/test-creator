@@ -10,7 +10,7 @@
         <menus>
           <Menu mnemonicParsing="false" text="Файл">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#loadTestsFromPath" text="Открыть тест" />
+              <MenuItem mnemonicParsing="false" onAction="#loadMultipleSelectedTests" text="Открыть тест" />
             </items>
           </Menu>
         </menus>

@@ -5,8 +5,11 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.File;
 import java.util.List;
 import java.util.Optional;
@@ -128,7 +131,31 @@ public class MainViewController {
         File file = directoryChooser.showDialog(stage);
         if(file != null)
             testManager.loadTests(file.getPath());
+
     }
+
+    public void loadMultipleSelectedTests() {
+        if(testManager.isTestIsRunning()) {
+            testIsRunningAlert.setHeaderText("Прервать прохождение теста?");
+            Optional<ButtonType> buttonType = testIsRunningAlert.showAndWait();
+            ButtonType button = buttonType.orElse(cancelAlertButton);
+            if(button == okAlertButton) {
+                showGreetingView();
+                testManager.setTestIsRunning(false);
+                FileChooser fileChooser = new FileChooser();
+                fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Json files", "*.json"));
+                List<File> files = fileChooser.showOpenMultipleDialog(stage);
+                testManager.loadTests(files);
+            }
+        }
+        else {
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Json files", "*.json"));
+            List<File> files = fileChooser.showOpenMultipleDialog(stage);
+            testManager.loadTests(files);
+        }
+    }
+
 
     public int getSelectedTestIndex() {
         return testsListListView.getSelectionModel().getSelectedIndex();

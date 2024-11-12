@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 public class TestManager {
@@ -103,6 +104,20 @@ public class TestManager {
         tests = new ArrayList<>();
         if(testFiles != null) {
             for (File testfile : testFiles) {
+                try {
+                    tests.add(objectMapper.readValue(testfile, Test.class));
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+        testIsRunning = false;
+        testsListChangedListener.onTriggered();
+    }
+
+    public void loadTests(List<File> files) {
+        if(files != null) {
+            for (File testfile : files) {
                 try {
                     tests.add(objectMapper.readValue(testfile, Test.class));
                 } catch (IOException e) {

@@ -19,9 +19,14 @@
             </Label>
             <TextField fx:id="testNameTextField" prefHeight="46.0" prefWidth="600.0">
                <VBox.margin>
-                  <Insets bottom="100.0" left="20.0" right="20.0" />
+                  <Insets bottom="20.0" left="20.0" right="20.0" />
                </VBox.margin>
             </TextField>
+            <Label fx:id="testNameEmptyLabel" text="Вы не ввели название теста" textFill="#fc4747" visible="false">
+               <VBox.margin>
+                  <Insets bottom="70.0" />
+               </VBox.margin>
+            </Label>
             <AnchorPane prefHeight="53.0" prefWidth="602.0">
                <VBox.margin>
                   <Insets top="40.0" />

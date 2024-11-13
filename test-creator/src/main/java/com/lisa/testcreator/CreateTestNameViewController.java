@@ -26,6 +26,8 @@ public class CreateTestNameViewController {
             testNameEmptyLabel.setVisible(true);
         }
         else {
+            testNameTextField.clear();
+            testNameTextField.setVisible(false);
             testManager.setTestToCreateName(testName);
         }
     }

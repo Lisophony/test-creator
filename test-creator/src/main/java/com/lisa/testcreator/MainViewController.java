@@ -8,8 +8,6 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import javax.swing.*;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.File;
 import java.util.List;
 import java.util.Optional;
@@ -81,8 +79,19 @@ public class MainViewController {
                 else {
                      testsListListView.getSelectionModel().select(testManager.getCurrentTestId());
                 }
-            }
-            else {
+            } else if (testManager.isTestCreationRunning()) {
+                testIsRunningAlert.setHeaderText("Прервать создание теста?");
+                Optional<ButtonType> buttonType = testIsRunningAlert.showAndWait();
+                ButtonType button = buttonType.orElse(cancelAlertButton);
+                if(button == okAlertButton) {
+                    showGreetingView();
+                    testManager.setTestIsRunning(false);
+                }
+                else {
+                    testsListListView.getSelectionModel().select(testManager.getCurrentTestId());
+                }
+                
+            } else {
                 showGreetingView();
             }
         });

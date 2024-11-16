@@ -75,6 +75,10 @@ public class TestManager {
         return currentTestId;
     }
 
+    public boolean isTestCreationRunning() {
+        return testCreationRunning;
+    }
+
     public void setSelectedTestId(int selectedTestId) {
         this.selectedTestId = selectedTestId;
         testItemSelectedListener.onTriggered();
